@@ -2,19 +2,23 @@
 
 This project demonstrates a complete end-to-end integration with the Signus API using Node.js.
 
-It walks through the full document lifecycle:
+It walks through the document lifecycle using the v1 API:
 
-- create a template
-- generate a document from template
-- send for signature
-- complete signing
-- download the final signed PDF
+1. List templates
+2. Get template details
+3. Create a document from a template
+4. Verify the document is in DRAFT status
+5. Send the document for signature
+6. Verify the document is in PENDING status
+
+After the signer completes signing via the email link, you can also use the API to verify COMPLETED status and download the final signed PDF.
 
 ## Prerequisites
 
 - Node.js (v18+ recommended)
-- Signus account: https://app.signus.ai/join
-- API access enabled for your account
+- A Signus account: https://app.signus.ai/join
+- An API key created in Signus UI (Settings > API Keys)
+- A template created in Signus UI with at least one file, one signer recipient, and one signature field
 
 ## Setup
 
@@ -22,13 +26,19 @@ It walks through the full document lifecycle:
 npm install
 ```
 
-Create a `.env` file:
+Copy `.env.example` to `.env` and fill in your values:
 
 ```
-SIGNUS_API_KEY=your_api_key
-ACCOUNT_ID=your_account_id
 BASE_URL=https://api.signus.ai
+ACCOUNT_ID=your_account_id
+SIGNUS_API_KEY=your_api_key
+TEMPLATE_ID=your_template_id
+TEMPLATE_RECIPIENT_ID=your_recipient_id
+SIGNER_NAME=Jane Doe
+SIGNER_EMAIL=jane.doe@example.com
 ```
+
+To find your `TEMPLATE_RECIPIENT_ID`, run the test once with just the first four variables filled in. The "Get template details" step will print the recipient IDs.
 
 ## Run
 
@@ -44,16 +54,12 @@ npm run build
 
 ## What this example covers
 
-- Create template (file, recipient, signature field)
-- List templates
-- Get template details
-- Create document from template
-- Verify draft state
-- Send for signature
-- Verify pending state
-- Simulate signing flow
-- Verify completed state
-- Download final PDF
+- List account templates (`GET /v1/accounts/{id}/templates`)
+- Get template details (`GET /v1/accounts/{id}/templates/{templateId}`)
+- Create document from template (`POST /v1/accounts/{id}/documents/from-template`)
+- Get document details (`GET /v1/accounts/{id}/documents/{documentId}`)
+- Send for signature (`POST /v1/accounts/{id}/documents/{documentId}/send`)
+- Download combined PDF (`GET /v1/accounts/{id}/documents/{documentId}/files/combined/content`)
 
 ## API Reference
 

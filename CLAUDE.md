@@ -2,21 +2,36 @@
 
 ## Project overview
 
-Node.js example app demonstrating end-to-end integration with the Signus API — template creation, document generation, signing flow, and PDF download.
+Public Node.js example demonstrating the Signus v1 API document lifecycle — list templates, create documents, send for signature, download signed PDFs.
 
 ## Tech stack
 
-- Node.js (v18+)
+- TypeScript, Node.js (v18+)
+- Jest + ts-jest for testing
+- ESLint + Prettier for linting/formatting
+- Native `fetch` (no HTTP client dependency)
 - Signus API (`https://api.signus.ai`)
 
 ## Setup
 
-- Copy `.env` with `SIGNUS_API_KEY`, `ACCOUNT_ID`, and `BASE_URL`
+- Copy `.env.example` to `.env` and fill in values
 - `npm install`
 
 ## Commands
 
-- `npm test` — runs the full end-to-end example
+- `npm test` — runs the full-flow test against the live Signus API
+- `npm run build` — compiles TypeScript to `dist/`
+- `npm run lint` / `npm run lint:fix` — ESLint
+- `npm run format` / `npm run format:fix` — Prettier
+- `npm run valid` — runs format + lint + build + test
+
+## Project structure
+
+- `src/types.ts` — API type definitions
+- `src/config.ts` — loads .env, exports typed config
+- `src/signus-client.ts` — `SignusClient` class wrapping the v1 API
+- `src/index.ts` — re-exports
+- `test/full-flow.test.ts` — sequential test walking through the document lifecycle
 
 ## API docs
 
