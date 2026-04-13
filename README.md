@@ -16,9 +16,18 @@ After the signer completes signing via the email link, you can also use the API 
 ## Prerequisites
 
 - Node.js (v18+ recommended)
-- A Signus account: https://app.signus.ai/join
-- An API key created in Signus UI (Settings > API Keys)
+- A Signus account
+- An API key (see below)
 - A template created in Signus UI with at least one file, one signer recipient, and one signature field
+
+## Getting your API key
+
+1. Sign up or log in at [app.signus.ai/join](https://app.signus.ai/join)
+2. Go to **Settings → Developer** at [app.signus.ai/settings/developer](https://app.signus.ai/settings/developer)
+3. Click **Create API Key**, give it a name, and copy the key
+4. Your **Account ID** is also available on the same page
+
+The API key is passed as a Bearer token in the `Authorization` header.
 
 ## Setup
 
