@@ -11,13 +11,19 @@ It walks through the full document lifecycle:
 - download the final signed PDF
 
 ## Prerequisites
-```
-Node.js (v18+ recommended)
-Signus account: https://app.signus.ai/join
-API access enabled for your account
+
+- Node.js (v18+ recommended)
+- Signus account: https://app.signus.ai/join
+- API access enabled for your account
+
+## Setup
+
+```bash
+npm install
 ```
 
-## Create a .env file:
+Create a `.env` file:
+
 ```
 SIGNUS_API_KEY=your_api_key
 ACCOUNT_ID=your_account_id
@@ -25,11 +31,19 @@ BASE_URL=https://api.signus.ai
 ```
 
 ## Run
-```
+
+```bash
 npm test
 ```
 
+## Build
+
+```bash
+npm run build
+```
+
 ## What this example covers
+
 - Create template (file, recipient, signature field)
 - List templates
 - Get template details
