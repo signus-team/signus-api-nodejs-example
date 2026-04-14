@@ -29,6 +29,8 @@ After the signer completes signing via the email link, you can also use the API 
 
 The API key is passed as a Bearer token in the `Authorization` header.
 
+<video src="https://github.com/user-attachments/assets/0df15934-dbf7-4f47-8d1e-6e7bbb280850" controls width="100%"></video>
+
 ## Setup
 
 ```bash
@@ -78,6 +80,6 @@ https://api.signus.ai/docs
 
 support@signus.ai
 
-## Signup:
+## Signup
 
 https://app.signus.ai/join
